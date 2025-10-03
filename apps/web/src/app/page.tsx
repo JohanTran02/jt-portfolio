@@ -1,6 +1,7 @@
 "use client";
 
 import Footer from "@/components/footer";
+import RubiksCube from "@/components/RubiksCube";
 
 export default function Home() {
 	return (
@@ -12,9 +13,8 @@ export default function Home() {
 				</div>
 				<div className="flex items-center gap-2">
 					<p>Curiosity</p>
-					<div className="size-96 bg-green-300 relative" >
-						<div className='absolute top-0 right-1/2 border-2 h-full border-black'></div>
-						<div className='absolute top-1/2 right-0 border-2 w-full border-black'></div>
+					<div className="size-96" >
+						<RubiksCube />
 					</div>
 					<p>Passion</p>
 				</div>
