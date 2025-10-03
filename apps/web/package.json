@@ -10,6 +10,7 @@
   "dependencies": {
     "@gsap/react": "^2.1.2",
     "@react-three/fiber": "^9.3.0",
+    "@react-three/drei": "^10.7.6",
     "@tanstack/react-query": "^5.85.5",
     "@types/three": "^0.180.0",
     "class-variance-authority": "^0.7.1",
