@@ -1,7 +1,11 @@
 "use client";
 
 import Footer from "@/components/footer";
-import RubiksCube from "@/components/RubiksCube";
+import RubiksCubeCanvas from "@/components/RubiksCubeCanvas";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
+
+gsap.registerPlugin(useGSAP);
 
 export default function Home() {
 
@@ -14,7 +18,7 @@ export default function Home() {
 				</div>
 				<div className="flex items-center gap-2">
 					<div className="size-96" >
-						<RubiksCube />
+						<RubiksCubeCanvas />
 					</div>
 				</div>
 			</div>
