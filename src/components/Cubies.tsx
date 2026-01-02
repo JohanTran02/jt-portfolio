@@ -7,17 +7,16 @@ type CubieProps = {
 
 function getCubieMaterials(x: number, y: number, z: number): string[] {
     return [
-        x === 1 ? "white" : "black",   // right face
-        x === -1 ? "yellow" : "black", // left face
-        y === 1 ? "red" : "black",     // top
-        y === -1 ? "orange" : "black", // bottom
-        z === 1 ? "blue" : "black",    // front
-        z === -1 ? "green" : "black",  // back
+        x === 1 ? "white" : "black",
+        x === -1 ? "yellow" : "black",
+        y === 1 ? "red" : "black",
+        y === -1 ? "orange" : "black",
+        z === 1 ? "blue" : "black",
+        z === -1 ? "green" : "black",
     ];
 }
 
 function Cubie({ position, materials }: CubieProps) {
-
     return (
         <mesh position={position}>
             <boxGeometry args={[1, 1, 1]} />
