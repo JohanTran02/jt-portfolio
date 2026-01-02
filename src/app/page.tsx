@@ -1,7 +1,10 @@
 "use client";
 
 import Footer from "@/components/footer";
+import Navigation from "@/components/Navigation";
 import RubiksCubeCanvas from "@/components/RubiksCubeCanvas";
+import NavigationProvider from "@/context/NavigationContext";
+import RubiksCubeProvider from "@/context/RubiksCubeContext";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 
@@ -16,11 +19,16 @@ export default function Home() {
 					<p className="text-8xl">Johan Tran</p>
 					<p>Full Stack developer based in Sweden</p>
 				</div>
-				<div className="flex items-center gap-2">
-					<div className="size-96" >
-						<RubiksCubeCanvas />
-					</div>
-				</div>
+				<RubiksCubeProvider>
+					<NavigationProvider>
+						<div className="flex items-center gap-2">
+							<div className="size-96" >
+								<RubiksCubeCanvas />
+							</div>
+						</div>
+						<Navigation />
+					</NavigationProvider>
+				</RubiksCubeProvider>
 			</div>
 			<Footer />
 		</div>
