@@ -79,14 +79,11 @@ const snap = (angle: number) => Math.round(angle / (Math.PI / 2)) * (Math.PI / 2
 
 const snapCubeFace = (
     cubeRef: RefObject<THREE.Group>,
-    snapTween: RefObject<GSAPTween | null>,
-    navRef: RefObject<GSAPTimeline & LoopFunctions>,
-    getIndex: () => number,
-    setcurrentFace: Dispatch<SetStateAction<number>>) => {
+    snapTween: RefObject<GSAPTween | null>
+) => {
     const tweenTarget = { t: 0 };
     const tempEuler = new THREE.Euler();
     const targetQuat = new THREE.Quaternion();
-    const colorIndex = getIndex();
 
     // Snap rotation
     tempEuler.setFromQuaternion(cubeRef.current.quaternion);
@@ -100,10 +97,6 @@ const snapCubeFace = (
         t: 1,
         duration: 1.5,
         ease: "power2.inOut",
-        onComplete() {
-            navRef.current.toIndex(colorIndex, { duration: 1.5, ease: "power1.inOut" });
-            setcurrentFace(colorIndex);
-        },
         onUpdate() {
             cubeRef.current.quaternion.slerpQuaternions(
                 cubeRef.current.quaternion,
@@ -116,8 +109,6 @@ const snapCubeFace = (
 
 export default function RubiksCubeCanvas() {
     const { cubeRef } = useContext(RubiksCubeContext);
-    const setcurrentFace = useContext(RubiksCubeContextDispatch);
-    const { navRef, getIndex } = useContext(NavigationContext);
     const isDragging = useRef(false);
     const lastPos = useRef<{ x: number; y: number } | null>(null);
     const xAxis = new THREE.Vector3(1, 0, 0);
@@ -128,7 +119,6 @@ export default function RubiksCubeCanvas() {
         e.stopPropagation();
 
         if (snapTween.current) snapTween.current.kill();
-        if (navRef.current) navRef.current.kill();
 
         isDragging.current = true;
         lastPos.current = { x: e.clientX, y: e.clientY };
@@ -139,9 +129,9 @@ export default function RubiksCubeCanvas() {
         isDragging.current = false;
         lastPos.current = null;
 
-        if (!cubeRef.current || !navRef.current) return;
+        if (!cubeRef.current) return;
 
-        snapCubeFace(cubeRef, snapTween, navRef, getIndex, setcurrentFace);
+        snapCubeFace(cubeRef, snapTween);
     }
 
     const handlePointerMove = (e: ThreeEvent<PointerEvent>) => {
