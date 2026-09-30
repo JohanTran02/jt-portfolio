@@ -30,12 +30,12 @@ jobs:
         with:
           persist-credentials: false
       - name: Setup Bun
-        uses: oven-sh/setup-bun@v2 
+        uses: oven-sh/setup-bun@v2
       - name: Install dependencies
         env:
           LEFTHOOK: 0
         run: bun ci
       - name: Run Tests
-        run: bun test --if-present
+        run: bun test
       - name: Run Build
-        run: bun build --if-present
+        run: bun build
