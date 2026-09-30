@@ -1,0 +1,41 @@
+name: Bun CI
+
+on:
+  pull_request:
+    branches: ["main"]
+    paths:
+      - "!.github/**"
+      - "**.js"
+      - "**.jsx"
+      - "**.ts"
+      - "**.tsx"
+      - "package.json"
+      - "package-lock.json"
+      - "tsconfig.json" # Add paths based on your project
+  merge_group:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref || github.run_id }}
+  cancel-in-progress: ${{github.event_name == 'pull_request'}}
+
+jobs:
+  verify_and_build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2 
+      - name: Install dependencies
+        env:
+          LEFTHOOK: 0
+        run: bun ci
+      - name: Run Tests
+        run: bun test --if-present
+      - name: Run Build
+        run: bun build --if-present
