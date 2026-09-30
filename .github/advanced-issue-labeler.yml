@@ -1,0 +1,31 @@
+policy:
+  - template: ["bug_report.yml", "feature_request.yml"]
+    section:
+      - id: ["size"]
+        block-list: []
+        label:
+          - name: "size: XS"
+            keys: ["XS"]
+          - name: "size: S"
+            keys: ["S"]
+          - name: "size: M"
+            keys: ["M"]
+          - name: "size: L"
+            keys: ["L"]
+          - name: "size: XL"
+            keys: ["XL"]
+
+      - id: ["priority"]
+        block-list: []
+        label:
+          - name: "priority: low"
+            keys: ["Low"]
+
+          - name: "priority: medium"
+            keys: ["Medium"]
+
+          - name: "priority: high"
+            keys: ["High"]
+
+          - name: "priority: critical"
+            keys: ["Critical"]

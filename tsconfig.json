@@ -27,7 +27,19 @@
       "@/*": [
         "./src/*"
       ]
-    }
+    },
+    "types": ["node"],
+    "sourceMap": true,
+    "declaration": true,
+    "declarationMap": true,
+    "noUncheckedIndexedAccess": true,
+    "exactOptionalPropertyTypes": true,
+    "noImplicitReturns": true,
+    "noImplicitOverride": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noUncheckedSideEffectImports": true,
+    "moduleDetection": "force",
   },
   "include": [
     "./**/*.ts",
