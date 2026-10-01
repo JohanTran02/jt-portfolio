@@ -3,7 +3,12 @@ import ultracite from "ultracite/oxfmt";
 
 export default defineConfig({
   ...ultracite,
-  ignorePatterns: [...(ultracite.ignorePatterns ?? []), "**.vscode/**"],
+  ignorePatterns: [
+    ...(ultracite.ignorePatterns ?? []),
+    "**.vscode/**",
+    "src/components/ui/**",
+    "src/rubiks-cube/**",
+  ],
   insertFinalNewline: false,
   sortTailwindcss: {
     functions: ["clsx", "cva", "tw", "twMerge", "cn", "twJoin", "tv"],
