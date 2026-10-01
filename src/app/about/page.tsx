@@ -1,7 +1,3 @@
 export default function Page() {
-    return (
-        <div>
-            about
-        </div>
-    )
+  return <div>about</div>;
 }
