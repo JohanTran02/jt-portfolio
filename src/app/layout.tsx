@@ -1,24 +1,20 @@
 import type { Metadata } from "next";
+
 import "../index.css";
-import Providers from "@/components/providers";
 
 export const metadata: Metadata = {
-	title: "jt-portfolio",
-	description: "jt-portfolio",
+  description: "jt-portfolio",
+  title: "jt-portfolio",
 };
 
 export default function RootLayout({
-	children,
+  children,
 }: Readonly<{
-	children: React.ReactNode;
+  children: React.ReactNode;
 }>) {
-	return (
-		<html lang="en" suppressHydrationWarning>
-			<body>
-				<Providers>
-					{children}
-				</Providers>
-			</body>
-		</html>
-	);
+  return (
+    <html lang="en" suppressHydrationWarning>
+      <body>{children}</body>
+    </html>
+  );
 }

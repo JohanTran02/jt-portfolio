@@ -1,34 +1,39 @@
 import { useGSAP } from "@gsap/react";
-import gsap from "gsap";
+import { gsap } from "gsap";
 
 export default function Footer() {
-    useGSAP(() => {
-        const tl = gsap.timeline({ defaults: { ease: "power4.inOut", duration: 2 }, });
+  useGSAP(() => {
+    const footerSelector = ".footer-animate";
+    const tl = gsap.timeline({
+      defaults: { duration: 2, ease: "power4.inOut" },
+    });
 
-        tl.set('.footer-animate', {
-            position: 'fixed',
-            right: '50%',
-            bottom: '50%',
-            yPercent: 50,
-            xPercent: 50,
-        });
+    tl.set(footerSelector, {
+      bottom: "50%",
+      position: "fixed",
+      right: "50%",
+      xPercent: 50,
+      yPercent: 50,
+    });
 
-        tl.to('.footer-animate', { width: '100%', })
-            .to('.footer-animate', {
-                yPercent: 0,
-                bottom: 0,
-            }, '-=25%')
-            .to('.footer-animate', { width: 'auto' }, '-=30%')
-    })
+    tl.to(footerSelector, { width: "100%" })
+      .to(
+        footerSelector,
+        {
+          bottom: 0,
+          yPercent: 0,
+        },
+        "-=25%"
+      )
+      .to(footerSelector, { width: "auto" }, "-=30%");
+  });
 
-    return (
-        <>
-            <footer className="footer-animate">
-                <nav className="whitespace-nowrap flex justify-between">
-                    <p>Curiosity inspires how I explore code. </p>
-                    <p>Passion shapes my ideas into experiences.</p>
-                </nav>
-            </footer>
-        </>
-    )
+  return (
+    <footer className="footer-animate">
+      <nav className="flex justify-between whitespace-nowrap">
+        <p>Curiosity inspires how I explore code. </p>
+        <p>Passion shapes my ideas into experiences.</p>
+      </nav>
+    </footer>
+  );
 }

@@ -1,12 +1,10 @@
-export type TextType = {
-    word: string,
-    classname?: string,
+export interface TextType {
+  word: string;
+  classname?: string;
 }
 
-export const Text = ({ word, classname }: TextType) => {
-    return (
-        <div key={word} className={classname}>
-            {word}
-        </div>
-    )
-}
+export const Text = ({ word, classname }: TextType) => (
+  <div key={word} className={classname}>
+    {word}
+  </div>
+);
