@@ -26,9 +26,9 @@
   "customManagers": [
     {
       "customType": "regex",
-      "description": "Update semantic-release version used by npx",
+      "description": "Update semantic-release version used by bunx",
       "managerFilePatterns": ["^\\.github/workflows/[^/]+\\.ya?ml$"],
-      "matchStrings": ["\\srun: npx semantic-release@(?<currentValue>.*?)\\s"],
+      "matchStrings": ["\\srun: bunx semantic-release@(?<currentValue>.*?)\\s"],
       "datasourceTemplate": "npm",
       "depNameTemplate": "semantic-release"
     }
