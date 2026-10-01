@@ -1,0 +1,71 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "config:best-practices",
+    ":separateMultipleMajorReleases",
+    ":automergeRequireAllStatusChecks",
+    ":semanticCommits",
+    ":automergePr"
+  ],
+  "lockFileMaintenance": {
+    "enabled": true,
+    "automerge": true,
+    "extends": ["schedule:weekly"],
+    "minimumReleaseAge": null
+  },
+  "vulnerabilityAlerts": {
+    "enabled": true,
+    "automerge": true
+  },
+  "osvVulnerabilityAlerts": true,
+  "timezone": "Europe/Paris",
+  "minimumReleaseAge": "14 days",
+  "internalChecksFilter": "strict",
+  "automergeStrategy": "rebase",
+  "platformAutomerge": true,
+  "customManagers": [
+    {
+      "customType": "regex",
+      "description": "Update semantic-release version used by npx",
+      "managerFilePatterns": ["^\\.github/workflows/[^/]+\\.ya?ml$"],
+      "matchStrings": ["\\srun: npx semantic-release@(?<currentValue>.*?)\\s"],
+      "datasourceTemplate": "npm",
+      "depNameTemplate": "semantic-release"
+    }
+  ],
+  "packageRules": [
+    {
+      "description": "Schedule non-major updates during typical non-office hours on weekdays (10 PM - 5 AM)",
+      "matchUpdateTypes": ["minor", "patch", "pin", "digest", "pinDigest"],
+      "schedule": "* 0-4,22-23 * * 1-5",
+      "groupName": "dependencies(non-major)",
+      "automerge": true,
+      "minimumReleaseAge": "14 days"
+    },
+    {
+      "description": "Schedule non-major dev updates during typical non-office hours on weekdays (10 PM - 5 AM)",
+      "matchDepTypes": ["devDependencies"],
+      "matchUpdateTypes": ["minor", "patch", "pin", "digest", "pinDigest"],
+      "schedule": "* 0-4,22-23 * * 1-5",
+      "groupName": "devdependencies(non-major)",
+      "automerge": true,
+      "minimumReleaseAge": "14 days"
+    },
+    {
+      "description": "Schedule linter and formatter updates on Monday mornings (before 4 AM)",
+      "matchDepTypes": ["devDependencies"],
+      "schedule": "* 0-3 * * 1",
+      "matchPackageNames": ["oxlint", "oxfmt", "ultracite"],
+      "groupName": "linters/formatters devdependencies(non-major)",
+      "automerge": true,
+      "minimumReleaseAge": "14 days"
+    },
+    {
+      "description": "Block major updates and require manual dashboard approval",
+      "matchUpdateTypes": ["major"],
+      "dependencyDashboardApproval": true,
+      "automerge": false,
+      "minimumReleaseAge": "14 days"
+    }
+  ]
+}
