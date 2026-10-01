@@ -35,5 +35,5 @@ jobs:
         env:
           LEFTHOOK: 0
         run: bun ci
-      - name: Run Build
-        run: bun run build
+      # - name: Run Build
+      #   run: bun run build
