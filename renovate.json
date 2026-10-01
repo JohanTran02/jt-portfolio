@@ -29,7 +29,7 @@
       "description": "Update semantic-release version used by bunx",
       "managerFilePatterns": ["^\\.github/workflows/[^/]+\\.ya?ml$"],
       "matchStrings": ["\\srun: bunx semantic-release@(?<currentValue>.*?)\\s"],
-      "datasourceTemplate": "npm",
+      "datasourceTemplate": "bun",
       "depNameTemplate": "semantic-release"
     }
   ],
