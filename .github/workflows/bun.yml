@@ -36,4 +36,4 @@ jobs:
           LEFTHOOK: 0
         run: bun ci
       - name: Run Build
-        run: bun build
+        run: bun run build
