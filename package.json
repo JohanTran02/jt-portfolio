@@ -45,10 +45,10 @@
     "cz-conventional-changelog": "3.3.0",
     "eslint-plugin-github": "6.1.2",
     "eslint-plugin-sonarjs": "4.2.2",
-    "lefthook": "2.1.16",
+    "lefthook": "2.1.17",
     "oxfmt": "0.71.0",
     "oxlint": "1.86.0",
-    "oxlint-plugin-react-doctor": "0.9.16",
+    "oxlint-plugin-react-doctor": "0.9.17",
     "tailwindcss": "4.3.3",
     "typescript": "7.0.2",
     "ultracite": "7.12.2"
